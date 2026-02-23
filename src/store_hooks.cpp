@@ -632,7 +632,11 @@ static int64_t __fastcall Hook_##Name(void* self, void* async, void** out) { \
     if (g_shutdown) return ((FnResultQH_t)g_orig[VtIdx])(self, async, out); \
     LogHookFireOnce(VtIdx, #Name); return ((FnResultQH_t)g_orig[VtIdx])(self, async, out); }
 
-PASSTHROUGH3(QueryAssocAsync,          StoreVtable::QueryAssociatedProductsAsync)  // actually Fn5 but only logging
+static int64_t __fastcall Hook_QueryAssocAsync(void* self, void* ctx, uint64_t kind, uint64_t maxItems, void* async) {
+    if (g_shutdown) return ((Fn5)g_orig[StoreVtable::QueryAssociatedProductsAsync])(self, ctx, kind, maxItems, async);
+    LogHookFireOnce(StoreVtable::QueryAssociatedProductsAsync, "QueryAssocAsync");
+    return ((Fn5)g_orig[StoreVtable::QueryAssociatedProductsAsync])(self, ctx, kind, maxItems, async);
+}
 PASSTHROUGH_QH(QueryAssocResult,       StoreVtable::QueryAssociatedProductsResult)
 PASSTHROUGH3(QueryCurrentGameAsync,    StoreVtable::QueryProductForCurrentGameAsync)
 PASSTHROUGH_QH(QueryCurrentGameResult, StoreVtable::QueryProductForCurrentGameResult)

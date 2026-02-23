@@ -71,6 +71,7 @@ Get Store IDs from [dbox.tools](https://dbox.tools) by searching for your game.
 |------|--------|-------|
 | Forza Horizon 5 | Working | All DLCs including unlisted promo cars |
 | Vampire Survivors | Working | All DLCs |
+| SnowRunner | Working | All season DLCs |
 
 ## Building From Source
 
