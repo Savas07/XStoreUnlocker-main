@@ -1,0 +1,9 @@
+LIBRARY XGameRuntime
+EXPORTS
+    QueryApiImpl
+    InitializeApiImpl
+    InitializeApiImplEx
+    InitializeApiImplEx2
+    UninitializeApiImpl
+    DllCanUnloadNow PRIVATE
+    XErrorReport
